@@ -1,12 +1,42 @@
 package Transport;
 
 public class Truck extends Transport implements Competitive {
+    enum LoadCapacity {
+        N1(0f, 3.5f),
+        N2(3.5f, 12f),
+        N3(12f, 0);
+        private final float minimumTonnage;
+        private final float maximumTonnage;
+        LoadCapacity(float minimumTonnage, float maximumTonnage) {
+            this.minimumTonnage = minimumTonnage;
+            this.maximumTonnage = maximumTonnage;
+        }
+        public String toString() {
+            if (minimumTonnage == 0) {
+                return "Грузоподъемность: до " + maximumTonnage + " тонн.";
+            }
+            if (maximumTonnage == 0) {
+                return "Грузоподъемность: свыше " + minimumTonnage + " тонн.";
+            }
+            return "Грузоподъемность: от " + minimumTonnage + " до " + maximumTonnage + " тонн.";
+        }
+
+        public float getMinimumTonnage() {
+            return minimumTonnage;
+        }
+
+        public float getMaximumTonnage() {
+            return maximumTonnage;
+        }
+    }
+    private LoadCapacity loadCapacity;
     public Truck() {
         super("", "", 0);
     }
 
-    public Truck(String brand, String model, double engineVolume) {
+    public Truck(String brand, String model, double engineVolume, LoadCapacity loadCapacity) {
         super(brand, model, engineVolume);
+        this.loadCapacity = loadCapacity;
     }
 
     @Override
@@ -48,4 +78,18 @@ public class Truck extends Transport implements Competitive {
     public void getMaximumSpeed() {
         System.out.println("Максимальная скорость среди грузовиков: ");
     }
+    @Override
+    public void printType() {
+        if (loadCapacity == null) {
+            System.out.println("Данных по транспортному средству недостаточно.");
+        }
+        if (loadCapacity.getMinimumTonnage() == 0) {
+            System.out.println("Грузоподъемность: до " + loadCapacity.getMaximumTonnage() + " тонн.");
+        }
+        if (loadCapacity.getMaximumTonnage() == 0) {
+            System.out.println("Грузоподъемность: свыше " + loadCapacity.getMinimumTonnage() + " тонн.");
+        } else {
+            System.out.println("Грузоподъемность: от " + loadCapacity.getMinimumTonnage() + " до " + loadCapacity.getMaximumTonnage() + " тонн.");
+        }
+        }
 }

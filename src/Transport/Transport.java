@@ -72,5 +72,6 @@ public abstract class Transport {
     public abstract void getBestLapTime();
 
     public abstract void getMaximumSpeed();
+    public abstract void printType();
 }
 
