@@ -1,5 +1,7 @@
 package Transport;
 
+import java.util.List;
+
 public class Car extends Transport implements Competitive {
     enum BodyType {
         BODY_TYPE_SEDAN("Седан"),
@@ -35,11 +37,6 @@ public class Car extends Transport implements Competitive {
     public Car(String brand, String model, double engineVolume, BodyType bodyType) {
         super(brand, model, engineVolume);
         this.bodyType = bodyType;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 
     @Override
@@ -82,6 +79,20 @@ public class Car extends Transport implements Competitive {
             System.out.println("Данных по транспортному средству недостаточно.");
         } else {
             System.out.println(bodyType);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", " + bodyType.toString();
+    }
+
+    @Override
+    public void addMechanic(List<Mechanic> mechanic) {
+        for (Mechanic value : mechanic) {
+            if (value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_CAR || value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_UNIVERSAL) {
+                System.out.println("Для ТО и ремонта " + getBrand() + getModel() + " назначен механик " + value.getMechanicFullName());
+            }
         }
     }
 }

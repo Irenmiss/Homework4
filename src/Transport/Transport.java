@@ -1,11 +1,15 @@
 package Transport;
 
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Transport {
     private final String brand;
     private final String model;
     private double engineVolume;
+    List<Mechanic> mechanic;
+    List<Transport> transports;
+    List<Driver> drivers;
 
     public Transport(String brand, String model, double engineVolume) {
         if (brand.isEmpty() || brand == null) {
@@ -45,6 +49,8 @@ public abstract class Transport {
         }
     }
 
+    public abstract void printType();
+
     @Override
     public String toString() {
         return "Бренд: " + getBrand() + ", Модель: " + getModel() + ", Объём двигателя: " + getEngineVolume();
@@ -72,6 +78,7 @@ public abstract class Transport {
     public abstract void getBestLapTime();
 
     public abstract void getMaximumSpeed();
-    public abstract void printType();
+
+    public abstract void addMechanic(List<Mechanic> mechanic);
 }
 

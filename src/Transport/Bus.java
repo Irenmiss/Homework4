@@ -1,5 +1,7 @@
 package Transport;
 
+import java.util.List;
+
 public class Bus extends Transport implements Competitive {
     enum NumberOfSeats {
         SUPER_SMALL(0, 10),
@@ -45,7 +47,7 @@ public class Bus extends Transport implements Competitive {
 
     @Override
     public String toString() {
-        return super.toString();
+        return super.toString() + ", " + numberOfSeats.toString();
     }
 
     @Override
@@ -82,12 +84,22 @@ public class Bus extends Transport implements Competitive {
     public void getMaximumSpeed() {
         System.out.println("Максимальная скорость среди автобусов: ");
     }
+
     @Override
-    public void printType(){
+    public void printType() {
         if (numberOfSeats == null) {
             System.out.println("Данных по транспортному средству недостаточно.");
         } else {
             System.out.println("Вместимость: " + numberOfSeats.getMinimumNumberOfSeats() + "-" + numberOfSeats.getMaximumNumberOfSeats() + " мест.");
+        }
+    }
+
+    @Override
+    public void addMechanic(List<Mechanic> mechanic) {
+        for (Mechanic value : mechanic) {
+            if (value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_BUS || value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_UNIVERSAL) {
+                System.out.println("Для ТО и ремонта " + getBrand() + getModel() + " назначен механик " + value.getMechanicFullName());
+            }
         }
     }
 }

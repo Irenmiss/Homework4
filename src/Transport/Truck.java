@@ -1,5 +1,7 @@
 package Transport;
 
+import java.util.List;
+
 public class Truck extends Transport implements Competitive {
     enum LoadCapacity {
         N1(0f, 3.5f),
@@ -41,7 +43,7 @@ public class Truck extends Transport implements Competitive {
 
     @Override
     public String toString() {
-        return super.toString();
+        return super.toString() + ", " + loadCapacity.toString();
     }
 
     @Override
@@ -91,5 +93,15 @@ public class Truck extends Transport implements Competitive {
         } else {
             System.out.println("Грузоподъемность: от " + loadCapacity.getMinimumTonnage() + " до " + loadCapacity.getMaximumTonnage() + " тонн.");
         }
+    }
+
+    @Override
+    public void addMechanic(List<Mechanic> mechanic) {
+        for (Mechanic value : mechanic) {
+            if (value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_TRUCK || value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_UNIVERSAL) {
+                System.out.println("Для ТО и ремонта " + getBrand() + getModel() + " назначен механик " + value.getMechanicFullName());
+            }
         }
+    }
 }
+
