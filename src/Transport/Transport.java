@@ -3,7 +3,7 @@ package Transport;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class Transport {
+public abstract class Transport implements Competitive {
     private final String brand;
     private final String model;
     private double engineVolume;

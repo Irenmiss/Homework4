@@ -2,7 +2,7 @@ package Transport;
 
 import java.util.List;
 
-public class Bus extends Transport implements Competitive {
+public class Bus extends Transport {
     enum NumberOfSeats {
         SUPER_SMALL(0, 10),
         SMALL(0, 25),

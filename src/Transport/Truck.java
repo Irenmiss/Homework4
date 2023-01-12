@@ -2,7 +2,7 @@ package Transport;
 
 import java.util.List;
 
-public class Truck extends Transport implements Competitive {
+public class Truck extends Transport {
     enum LoadCapacity {
         N1(0f, 3.5f),
         N2(3.5f, 12f),

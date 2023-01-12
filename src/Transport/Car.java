@@ -2,7 +2,7 @@ package Transport;
 
 import java.util.List;
 
-public class Car extends Transport implements Competitive {
+public class Car extends Transport {
     enum BodyType {
         BODY_TYPE_SEDAN("Седан"),
         BODY_TYPE_HATCHBACK("Хэтчбек"),
