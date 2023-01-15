@@ -36,15 +36,12 @@ public class Mechanic {
     }
 
     public void doMaintenance() {
+        System.out.println("Механик " + getMechanicFullName() + " из компании " + getMechanicEmployerCompany() + " проводит техобслуживание транспортного средства.");
     }
-
-    ;
 
     public void repairCar() {
+        System.out.println("Механик " + getMechanicFullName() + " из компании " + getMechanicEmployerCompany() + " осуществляет ремонт транспортного средства.");
     }
-
-    ;
-
     public String getMechanicFullName() {
         return mechanicFullName;
     }

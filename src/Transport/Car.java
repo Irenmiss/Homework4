@@ -88,11 +88,11 @@ public class Car extends Transport {
     }
 
     @Override
-    public void addMechanic(List<Mechanic> mechanic) {
-        for (Mechanic value : mechanic) {
-            if (value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_CAR || value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_UNIVERSAL) {
-                System.out.println("Для ТО и ремонта " + getBrand() + getModel() + " назначен механик " + value.getMechanicFullName());
-            }
+    public void defineMechanicForTransport(Mechanic mechanic) {
+        if (mechanic.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_CAR || mechanic.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_UNIVERSAL) {
+                System.out.println("Для ТО и ремонта " + getBrand() + " " + getModel() + " назначен механик " + mechanic.getMechanicFullName());
+        } else {
+            System.out.println("Выбранный механик не может работать с данным типом транспорта.");
         }
     }
 }

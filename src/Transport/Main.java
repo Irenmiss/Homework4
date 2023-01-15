@@ -56,9 +56,15 @@ public class Main {
         mechanicList.add(mechanic4);
         mechanicList.forEach(System.out::println);
 
-        car1.addMechanic(mechanicList);
-        bus3.addMechanic(mechanicList);
-        truck2.addMechanic(mechanicList);
-        car4.addMechanic(mechanicList);
+        car1.defineMechanicForTransport(mechanic4);
+        bus3.defineMechanicForTransport(mechanic4);
+        truck2.defineMechanicForTransport(mechanic4);
+        car4.defineMechanicForTransport(mechanic4);
+
+        ServiceStation serviceStation = new ServiceStation();
+        serviceStation.addTransportToQueue(car1);
+        serviceStation.addTransportToQueue(bus3);
+        serviceStation.addTransportToQueue(truck2);
+
     }
 }

@@ -6,7 +6,7 @@ public class Truck extends Transport {
     enum LoadCapacity {
         N1(0f, 3.5f),
         N2(3.5f, 12f),
-        N3(12f, 0);
+        N3(12.1f, 0);
         private final float minimumTonnage;
         private final float maximumTonnage;
         LoadCapacity(float minimumTonnage, float maximumTonnage) {
@@ -23,11 +23,11 @@ public class Truck extends Transport {
             return "Грузоподъемность: от " + minimumTonnage + " до " + maximumTonnage + " тонн.";
         }
 
-        public float getMinimumTonnage() {
+        public Float getMinimumTonnage() {
             return minimumTonnage;
         }
 
-        public float getMaximumTonnage() {
+        public Float getMaximumTonnage() {
             return maximumTonnage;
         }
     }
@@ -96,11 +96,9 @@ public class Truck extends Transport {
     }
 
     @Override
-    public void addMechanic(List<Mechanic> mechanic) {
-        for (Mechanic value : mechanic) {
-            if (value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_TRUCK || value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_UNIVERSAL) {
-                System.out.println("Для ТО и ремонта " + getBrand() + getModel() + " назначен механик " + value.getMechanicFullName());
-            }
+    public void defineMechanicForTransport(Mechanic mechanic) {
+        if (mechanic.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_TRUCK || mechanic.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_UNIVERSAL) {
+                System.out.println("Для ТО и ремонта " + getBrand() + " " + getModel() + " назначен механик " + mechanic.getMechanicFullName());
         }
     }
 }

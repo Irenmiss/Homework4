@@ -95,11 +95,9 @@ public class Bus extends Transport {
     }
 
     @Override
-    public void addMechanic(List<Mechanic> mechanic) {
-        for (Mechanic value : mechanic) {
-            if (value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_BUS || value.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_UNIVERSAL) {
-                System.out.println("Для ТО и ремонта " + getBrand() + getModel() + " назначен механик " + value.getMechanicFullName());
+    public void defineMechanicForTransport(Mechanic mechanic) {
+        if (mechanic.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_BUS || mechanic.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_UNIVERSAL) {
+                System.out.println("Для ТО и ремонта " + getBrand() + " " + getModel() + " назначен механик " + mechanic.getMechanicFullName());
             }
         }
-    }
 }

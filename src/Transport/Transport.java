@@ -1,5 +1,6 @@
 package Transport;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -7,9 +8,7 @@ public abstract class Transport implements Competitive {
     private final String brand;
     private final String model;
     private double engineVolume;
-    List<Mechanic> mechanic;
-    List<Transport> transports;
-    List<Driver> drivers;
+    private final List<Mechanic> mechanics = new ArrayList<>();
 
     public Transport(String brand, String model, double engineVolume) {
         if (brand.isEmpty() || brand == null) {
@@ -48,6 +47,9 @@ public abstract class Transport implements Competitive {
             this.engineVolume = engineVolume;
         }
     }
+    public List<Mechanic> getMechanics() {
+        return mechanics;
+    }
 
     public abstract void printType();
 
@@ -79,6 +81,9 @@ public abstract class Transport implements Competitive {
 
     public abstract void getMaximumSpeed();
 
-    public abstract void addMechanic(List<Mechanic> mechanic);
+    public void defineMechanicForTransport(Mechanic mechanic) {
+        mechanics.add(mechanic);
+    }
+
 }
 
