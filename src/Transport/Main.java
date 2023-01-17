@@ -45,19 +45,19 @@ public class Main {
         driver2.driveVehicle(truck2);
         driver3.driveVehicle(bus2);
 
+        List<Mechanic> mechanics = new ArrayList<>();
         Mechanic mechanic1 = new Mechanic("Винтик В.В.", "Авто-Сервис", Mechanic.MechanicSpecializations.SPECIALIZATION_CAR);
         Mechanic mechanic2 = new Mechanic("Шпунтик Ш.Ш.", "Авто-Сервис", Mechanic.MechanicSpecializations.SPECIALIZATION_BUS);
         Mechanic mechanic3 = new Mechanic("Ломастер Н.Н", "Супер-Ремонт", Mechanic.MechanicSpecializations.SPECIALIZATION_TRUCK);
         Mechanic mechanic4 = new Mechanic("Всеумейкин К.К.", "Техпомощь", Mechanic.MechanicSpecializations.SPECIALIZATION_UNIVERSAL);
-        List<Mechanic> mechanicList = new ArrayList<>();
-        mechanicList.add(mechanic1);
-        mechanicList.add(mechanic2);
-        mechanicList.add(mechanic3);
-        mechanicList.add(mechanic4);
-        mechanicList.forEach(System.out::println);
+        mechanics.add(mechanic1);
+        mechanics.add(mechanic2);
+        mechanics.add(mechanic3);
+        mechanics.add(mechanic4);
+        mechanics.forEach(System.out::println);
 
-        car1.defineMechanicForTransport(mechanic4);
-        bus3.defineMechanicForTransport(mechanic4);
+        car1.defineMechanicForTransport(mechanic1);
+        bus3.defineMechanicForTransport(mechanic2);
         truck2.defineMechanicForTransport(mechanic4);
         car4.defineMechanicForTransport(mechanic4);
 
@@ -65,6 +65,7 @@ public class Main {
         serviceStation.addTransportToQueue(car1);
         serviceStation.addTransportToQueue(bus3);
         serviceStation.addTransportToQueue(truck2);
+        serviceStation.doMaintenance();
 
     }
 }

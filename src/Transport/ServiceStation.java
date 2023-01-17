@@ -5,6 +5,7 @@ import java.util.Queue;
 
 public class ServiceStation {
     private final Queue<Transport> transportQueue = new ArrayDeque<>();
+
     public void addTransportToQueue(Transport transport) {
         if (transport instanceof Bus) {
             System.out.println("Автобусы не нуждаются в ТО.");
@@ -12,10 +13,13 @@ public class ServiceStation {
             transportQueue.add(transport);
         }
     }
+
     public void doMaintenance() {
         Transport transport = transportQueue.poll();
-        if (transport != null) {
-            transport.getMechanics().get(0).doMaintenance();
-        }
+        for (Transport transport1 : transportQueue)
+            if (transport != null) {
+                transport.getMechanics().get(0).doMaintenance();
+            }
     }
 }
+

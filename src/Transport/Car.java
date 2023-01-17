@@ -1,5 +1,6 @@
 package Transport;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Car extends Transport {
@@ -29,7 +30,10 @@ public class Car extends Transport {
             return "Тип кузова: " + bodyType;
         }
     }
+
     private BodyType bodyType;
+    private final ArrayList<Mechanic> mechanics = new ArrayList<>();
+
     public Car() {
         super("", "", 0);
     }
@@ -73,8 +77,9 @@ public class Car extends Transport {
     public void getMaximumSpeed() {
         System.out.println("Максимальная скорость среди автомобилей: ");
     }
+
     @Override
-    public void printType(){
+    public void printType() {
         if (bodyType == null) {
             System.out.println("Данных по транспортному средству недостаточно.");
         } else {
@@ -90,7 +95,7 @@ public class Car extends Transport {
     @Override
     public void defineMechanicForTransport(Mechanic mechanic) {
         if (mechanic.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_CAR || mechanic.getMechanicSpecialization() == Mechanic.MechanicSpecializations.SPECIALIZATION_UNIVERSAL) {
-                System.out.println("Для ТО и ремонта " + getBrand() + " " + getModel() + " назначен механик " + mechanic.getMechanicFullName());
+            System.out.println("Для ТО и ремонта " + getBrand() + " " + getModel() + " назначен механик " + mechanic.getMechanicFullName());
         } else {
             System.out.println("Выбранный механик не может работать с данным типом транспорта.");
         }

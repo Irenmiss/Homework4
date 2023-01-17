@@ -8,7 +8,7 @@ public abstract class Transport implements Competitive {
     private final String brand;
     private final String model;
     private double engineVolume;
-    private final List<Mechanic> mechanics = new ArrayList<>();
+    private final ArrayList<Mechanic> mechanics = new ArrayList<>();
 
     public Transport(String brand, String model, double engineVolume) {
         if (brand.isEmpty() || brand == null) {
@@ -47,10 +47,9 @@ public abstract class Transport implements Competitive {
             this.engineVolume = engineVolume;
         }
     }
-    public List<Mechanic> getMechanics() {
+    public ArrayList<Mechanic> getMechanics() {
         return mechanics;
     }
-
     public abstract void printType();
 
     @Override
